@@ -2,13 +2,13 @@ import React from 'react';
 
 const Navbar = () => {
 	return (
-		<nav class='navbar'>
+		<nav className='navbar'>
 			<div>
-				<a class='logo' href='index.html'>
+				<a className='logo' href='index.html'>
 					Amazonia
 				</a>
 			</div>
-			<div class='nav-links'>
+			<div className='nav-links'>
 				<a href='cart.html'>Cart</a>
 				<a href='signin.html'>Sign In</a>
 			</div>
