@@ -1,4 +1,5 @@
 const {Pool} = require('pg');
+const colors = require('colors');
 
 const connectDB = () => {
 	try {
@@ -10,7 +11,7 @@ const connectDB = () => {
 			database: process.env.PG_DATABASE
 		});
 
-		console.log('PG IS RUNNING :D');
+		console.log('PG IS RUNNING :D'.yellow.bold);
 
 		module.exports = pool;
 	} catch (err) {
