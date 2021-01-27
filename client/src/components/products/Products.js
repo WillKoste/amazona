@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import NikeSlim from '../../images/p1.jpg';
 import NikeFat from '../../images/p2.jpg';
 import AdidasBoys from '../../images/p3.jpg';
@@ -11,155 +12,166 @@ import ProductItem from './ProductItem';
 const Products = () => {
 	const [products, setProducts] = useState([]);
 
-	return (
-		<section class='main container'>
-			<div class='cards'>
-				<ProductItem NikeSlim={NikeSlim} />
+	const fetchProducts = async () => {
+		const res = await axios.get(`/api/v1/products`);
+		setProducts(res.data.products);
+	};
 
-				<div class='card'>
+	useEffect(() => {
+		fetchProducts();
+	}, []);
+
+	return (
+		<section className='main container'>
+			<div className='cards'>
+				{products.map((product) => (
+					<ProductItem key={product.id} product={product} />
+				))}
+
+				{/* <div className='card'>
 					<a href='product.html'>
 						<img src={NikeFat} alt='p1.jpg' />
 					</a>
-					<div class='card-body'>
-						<a class='card-product-name' href='product.html'>
+					<div className='card-body'>
+						<a className='card-product-name' href='product.html'>
 							<h2>Nike Fat Guy Shirts</h2>
 						</a>
-						<div class='ratings'>
+						<div className='ratings'>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 						</div>
-						<p class='price'>$5.99</p>
+						<p className='price'>$5.99</p>
 					</div>
 				</div>
 
-				<div class='card'>
+				<div className='card'>
 					<a href='product.html'>
 						<img src={AdidasBoys} alt='p1.jpg' />
 					</a>
-					<div class='card-body'>
-						<a class='card-product-name' href='product.html'>
+					<div className='card-body'>
+						<a className='card-product-name' href='product.html'>
 							<h2>Adidas Boys' Shirts</h2>
 						</a>
-						<div class='ratings'>
+						<div className='ratings'>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 						</div>
-						<p class='price'>$18.47</p>
+						<p className='price'>$18.47</p>
 					</div>
 				</div>
 
-				<div class='card'>
+				<div className='card'>
 					<a href='product.html'>
 						<img src={NikeFatPants} alt='p1.jpg' />
 					</a>
-					<div class='card-body'>
-						<a class='card-product-name' href='product.html'>
+					<div className='card-body'>
+						<a className='card-product-name' href='product.html'>
 							<h2>Nike Fat Guy Pants</h2>
 						</a>
-						<div class='ratings'>
+						<div className='ratings'>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 							<span>
-								<i class='far fa-star'></i>
+								<i className='far fa-star'></i>
 							</span>
 						</div>
-						<p class='price'>$2.99</p>
+						<p className='price'>$2.99</p>
 					</div>
 				</div>
 
-				<div class='card'>
+				<div className='card'>
 					<a href='product.html'>
 						<img src={JNCO} alt='p1.jpg' />
 					</a>
-					<div class='card-body'>
-						<a class='card-product-name' href='product.html'>
+					<div className='card-body'>
+						<a className='card-product-name' href='product.html'>
 							<h2>JNCO Jeans</h2>
 						</a>
-						<div class='ratings'>
+						<div className='ratings'>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fa fa-star-half'></i>
+								<i className='fa fa-star-half'></i>
 							</span>
 						</div>
-						<p class='price'>$15,099.99</p>
+						<p className='price'>$15,099.99</p>
 					</div>
 				</div>
 
-				<div class='card'>
+				<div className='card'>
 					<a href='product.html'>
 						<img src={StealthySlacks} alt='p1.jpg' />
 					</a>
-					<div class='card-body'>
-						<a class='card-product-name' href='product.html'>
+					<div className='card-body'>
+						<a className='card-product-name' href='product.html'>
 							<h2>Stealthy Slacks</h2>
 						</a>
-						<div class='ratings'>
+						<div className='ratings'>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 							<span>
-								<i class='fas fa-star'></i>
+								<i className='fas fa-star'></i>
 							</span>
 						</div>
-						<p class='price'>$31.98</p>
+						<p className='price'>$31.98</p>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	);

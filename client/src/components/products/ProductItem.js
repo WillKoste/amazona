@@ -1,33 +1,19 @@
 import React from 'react';
+import Rating from './Rating';
+import {Link} from 'react-router-dom';
 
-const ProductItem = ({NikeSlim}) => {
+const ProductItem = ({NikeSlim, product}) => {
 	return (
-		<div class='card'>
-			<a href='product.html'>
-				<img src={NikeSlim} alt='p1.jpg' />
-			</a>
-			<div class='card-body'>
-				<a class='card-product-name' href='product.html'>
-					<h2>Nike Slim Shirts</h2>
+		<div className='card'>
+			<Link to={`/product/${product.id}`}>
+				<img src={product.image} alt='p1.jpg' />
+			</Link>
+			<div className='card-body'>
+				<a className='card-product-name' href='product.html'>
+					<h2>{product.name}</h2>
 				</a>
-				<div class='ratings'>
-					<span>
-						<i class='fa fa-star'></i>
-					</span>
-					<span>
-						<i class='fas fa-star'></i>
-					</span>
-					<span>
-						<i class='fas fa-star'></i>
-					</span>
-					<span>
-						<i class='fas fa-star'></i>
-					</span>
-					<span>
-						<i class='far fa-star'></i>
-					</span>
-				</div>
-				<p class='price'>$125.99</p>
+				<Rating rating={product.rating} numberReviews={product.number_reviews} />
+				<p className='price'>${product.price}</p>
 			</div>
 		</div>
 	);

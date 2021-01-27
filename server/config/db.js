@@ -11,7 +11,7 @@ const connectDB = () => {
 			database: process.env.PG_DATABASE
 		});
 
-		console.log('PG IS RUNNING :D'.yellow.bold);
+		console.log('PG IS RUNNING :D'.magenta.bold);
 
 		module.exports = pool;
 	} catch (err) {
