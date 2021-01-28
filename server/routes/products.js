@@ -21,4 +21,19 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:productid', async (req, res) => {
+	try {
+		const product = await pool.query(`SELECT * FROM products WHERE id = $1`, [req.params.productid]);
+
+		if (!product) {
+			return res.status(404).json({success: false, data: `Product ${req.params.productid} could not be found, please try again.`});
+		}
+
+		res.json({success: true, product: product.rows[0]});
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({success: false, data: 'Server Error'});
+	}
+});
+
 module.exports = router;
