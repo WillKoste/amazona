@@ -56,6 +56,10 @@ h2 {
 	margin: 0 auto;
 }
 
+.row {
+	display: flex;
+}
+
 .card {
 	border: 0.1rem solid var(--light-color);
 	background: #f8f8f8;
