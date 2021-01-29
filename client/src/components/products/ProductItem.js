@@ -13,6 +13,7 @@ const ProductItem = ({NikeSlim, product}) => {
 					<h2>{product.name}</h2>
 				</a>
 				<Rating rating={product.rating} numberReviews={product.number_reviews} />
+				{product.items_in_stock > 0 ? <span className='success'>In Stock</span> : <span className='fail'>Out of Stock</span>}
 				<p className='price'>${product.price}</p>
 			</div>
 		</div>
